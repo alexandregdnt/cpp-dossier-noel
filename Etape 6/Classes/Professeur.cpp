@@ -139,6 +139,7 @@ void Professeur::operator=(const Professeur &prof) {
     setPrenom(prof.getPrenom());
 }
 ostream &operator<<(ostream &s, const Professeur &prof) {
+    /*
     s << "Professeur : (" << prof.getId() << ") ";
     if (prof.getNom()) {
         s << prof.getNom() << " ";
@@ -151,6 +152,17 @@ ostream &operator<<(ostream &s, const Professeur &prof) {
         s << "/";
     }
     s << endl;
+    */
+
+    if (prof.getNom())
+        s << prof.getNom();
+    else
+        s << "/";
+    s << " ";
+    if (prof.getPrenom())
+        s << prof.getPrenom();
+    else
+        s << "/";
 
     return s;
 }

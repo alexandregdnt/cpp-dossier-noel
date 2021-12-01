@@ -22,10 +22,10 @@ public:
     Liste(const Liste<T> &);
 
     /*==================== DESTRUCTEUR ====================*/
-    ~Liste();
+    virtual ~Liste();
 
     /*==================== MODIFICATEURS ====================*/
-    void insere(const T &);
+    virtual void insere(const T &);
     T retire(int);
 
     /*==================== GETTERS ====================*/

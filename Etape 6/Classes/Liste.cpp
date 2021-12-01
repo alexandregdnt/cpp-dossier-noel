@@ -16,13 +16,25 @@ Liste<T>::Liste(const Liste<T> &copie) {
 #endif
 
     if (copie.pTete == NULL) {
-        pTete == NULL;
+        pTete = NULL;
     } else {
-        Cellule<T> *curCopie = copie.pTete, *curThis = NULL, *tmp = NULL;
+        Cellule<T> *curCopie, *curThis, *tmp;
+
+        curCopie = copie.pTete;
+        curThis = NULL;
+        tmp = NULL;
+
+        pTete = new Cellule<T>;
+        pTete->valeur = curCopie->valeur;
+        pTete->suivant = NULL;
+
+        curCopie = curCopie->suivant;
+        curThis = pTete;
 
         while (curCopie != NULL) {
             tmp = new Cellule<T>;
             tmp->valeur = curCopie->valeur;
+            tmp->suivant = NULL;
 
             curCopie = curCopie->suivant;
             curThis->suivant = tmp;
@@ -37,19 +49,14 @@ Liste<T>::~Liste() {
 #ifdef DEBUG
     cout << "Liste: destructeur" << endl;
 #endif
-    Cellule<T> *pTmp, *pPrec;
-    pTmp = pTete;
+    Cellule<T> *pTmp = pTete, *pCur = NULL;
 
     while (pTmp != NULL) {
-        pPrec = pTmp;
+        pCur = pTmp;
         pTmp = pTmp->suivant;
-        delete pPrec;
+        delete pCur;
     }
-
-    if (pTmp)
-        delete pTmp;
-    if (pTete)
-        delete pTete;
+    delete pTmp;
 }
 
 /*==================== MODIFICATEURS ====================*/
@@ -58,16 +65,19 @@ void Liste<T>::insere(const T &val) {
 #ifdef DEBUG
     cout << "Liste: insere" << endl;
 #endif
-    Cellule<T> *nvCell, *pTmp;
-    pTmp = pTete;
-
-    nvCell = new Cellule<T>;
-    nvCell->valeur = val;
-    // cout << "nv val: " << nvCell->valeur << " - address: " << nvCell << endl;
-
-    if (pTmp == NULL) {
-        pTete = nvCell;
+    if (estVide()) {
+        pTete = new Cellule<T>;
+        pTete->valeur = val;
+        pTete->suivant = NULL;
     } else {
+        Cellule<T> *nvCell, *pTmp;
+        pTmp = pTete;
+
+        nvCell = new Cellule<T>;
+        nvCell->valeur = val;
+        nvCell->suivant = NULL;
+        // cout << "nv val: " << nvCell->valeur << " - address: " << nvCell << endl;
+
         while (pTmp->suivant != NULL) {
             pTmp = pTmp->suivant;
         }
@@ -128,7 +138,7 @@ void Liste<T>::Affiche() const {
     while (pTmp != NULL) {
         cout << pTmp->valeur;
         if (pTmp->suivant != NULL)
-            cout << " ";
+            cout << "; ";
         pTmp = pTmp->suivant;
     }
     cout << ")" << endl;
@@ -141,19 +151,32 @@ void Liste<T>::operator=(const Liste<T> &copie) {
 #ifdef DEBUG
     cout << "Liste: constructeur de copie" << endl;
 #endif
-    Cellule<T> *pTmpThis, *pTmpCopie;
-    pTmpThis = pTete;
-    pTmpCopie = copie.pTete;
+    if (copie.pTete == NULL) {
+        pTete = NULL;
+    } else {
+        Cellule<T> *curCopie, *curThis, *tmp;
 
-    while (pTmpCopie != NULL) {
-        pTmpThis->valeur = pTmpCopie->valeur;
-        pTmpCopie = pTmpCopie->suivant;
+        curCopie = copie.pTete;
+        curThis = NULL;
+        tmp = NULL;
+
+        pTete = new Cellule<T>;
+        pTete->valeur = curCopie->valeur;
+        pTete->suivant = NULL;
+
+        curCopie = curCopie->suivant;
+        curThis = pTete;
+
+        while (curCopie != NULL) {
+            tmp = new Cellule<T>;
+            tmp->valeur = curCopie->valeur;
+            tmp->suivant = NULL;
+
+            curCopie = curCopie->suivant;
+            curThis->suivant = tmp;
+            curThis = tmp;
+        }
     }
-
-    if (pTmpThis)
-        delete pTmpThis;
-    if (pTmpCopie)
-        delete pTmpCopie;
 }
 
 template struct Cellule<int>;
