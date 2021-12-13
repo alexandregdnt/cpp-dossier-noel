@@ -161,6 +161,7 @@ void Essai2()
 /*******************************************************************************************************/
 void Essai3()
 {
+    /*
   cout << "----- 3. Test du template ListeTriee avec des entiers ---------------------------------------" << endl;
   cout << "----- 3.1 Creation et gestion d'une Liste triee ---------------------------------------------" << endl;
 
@@ -189,6 +190,7 @@ void Essai3()
   liste.Affiche();
   cout << "La liste contient " << liste.getNombreElements() << " elements." << endl;
   cout << endl;
+  */
 }
 
 /*******************************************************************************************************/

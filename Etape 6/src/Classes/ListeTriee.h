@@ -10,6 +10,7 @@ using namespace std;
 template<class T>
 class ListeTriee: public Liste<T> {
 private:
+    using Liste<T>::pTete;
 
 public:
     /*==================== CONSTRUCTEURS ====================*/
@@ -21,6 +22,7 @@ public:
 
     /*==================== MÉTHODES ====================*/
     void insere(const T &);
+    bool estVide() const;
 };
 
 #endif

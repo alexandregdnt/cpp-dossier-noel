@@ -23,10 +23,30 @@ ListeTriee<T>::~ListeTriee() {
 #endif
 }
 
-/*==================== DESTRUCTEUR ====================*/
+/*==================== AUTRES MÉTHODES ====================*/
 template<class T>
-void ListeTriee<T>::insere(const T &) {
+void ListeTriee<T>::insere(const T &val) {
+    if (estVide()) {
+        pTete = new Cellule<T>;
+        pTete->valeur = val;
+        pTete->suivant = NULL;
+    } else {
+        Cellule<T> *nvCell, *pTmp;
+        pTmp = pTete;
 
+        nvCell = new Cellule<T>;
+        nvCell->valeur = val;
+        nvCell->suivant = NULL;
+        // cout << "nv val: " << nvCell->valeur << " - address: " << nvCell << endl;
+
+        while (pTmp->suivant != NULL) {
+            pTmp = pTmp->suivant;
+        }
+
+        if (pTmp->suivant == NULL) {
+            pTmp->suivant = nvCell;
+        }
+    }
 }
 
 template class ListeTriee<int>;

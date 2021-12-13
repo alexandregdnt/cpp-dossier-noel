@@ -1,68 +1,75 @@
 .SILENT:
 COMP = g++ -DDEBUG
 
-all: Test6
+all: createBuild Test6
 
-Test6: Test6.cpp Classes/Event.o Classes/Temps.o Classes/Timing.o Classes/Exception.o Classes/TempsException.o Classes/TimingException.o Classes/Planifiable.o Classes/Professeur.o Classes/Groupe.o Classes/Local.o Classes/Liste.o Classes/ListeTriee.o Classes/Iterateur.o Libraries/Functions.o
+createBuild:
+	echo "Creation du répertoire build"
+	rm -rf build
+	mkdir build
+	mkdir build/Classes
+	mkdir build/Libraries
+
+Test6: src/Test6.cpp Classes/Event.o Classes/Temps.o Classes/Timing.o Classes/Exception.o Classes/TempsException.o Classes/TimingException.o Classes/Planifiable.o Classes/Professeur.o Classes/Groupe.o Classes/Local.o Classes/Liste.o Classes/ListeTriee.o Classes/Iterateur.o Libraries/Functions.o
 	echo "Creation Test6"
-	${COMP} Test6.cpp -o Test6 Classes/Liste.o Classes/Event.o Classes/Temps.o Classes/Timing.o Classes/Exception.o Classes/TempsException.o Classes/TimingException.o Classes/Planifiable.o Classes/Professeur.o Classes/Groupe.o Classes/Local.o Classes/Liste.o Classes/ListeTriee.o Classes/Iterateur.o Libraries/Functions.o
+	${COMP} src/Test6.cpp -o build/Test6 build/Classes/Liste.o build/Classes/Event.o build/Classes/Temps.o build/Classes/Timing.o build/Classes/Exception.o build/Classes/TempsException.o build/Classes/TimingException.o build/Classes/Planifiable.o build/Classes/Professeur.o build/Classes/Groupe.o build/Classes/Local.o build/Classes/Liste.o build/Classes/ListeTriee.o build/Classes/Iterateur.o build/Libraries/Functions.o
 
-Classes/Event.o: Classes/Event.cpp
+Classes/Event.o: src/Classes/Event.cpp
 	echo "Creation Event.o"
-	${COMP} Classes/Event.cpp -c -o Classes/Event.o
+	${COMP} src/Classes/Event.cpp -c -o build/Classes/Event.o
 
-Classes/Temps.o: Classes/Temps.cpp
+Classes/Temps.o: src/Classes/Temps.cpp
 	echo "Creation Temps.o"
-	${COMP} Classes/Temps.cpp -c -o Classes/Temps.o
+	${COMP} src/Classes/Temps.cpp -c -o build/Classes/Temps.o
 
-Classes/Timing.o: Classes/Timing.cpp
+Classes/Timing.o: src/Classes/Timing.cpp
 	echo "Creation Timing.o"
-	${COMP} Classes/Timing.cpp -c -o Classes/Timing.o
+	${COMP} src/Classes/Timing.cpp -c -o build/Classes/Timing.o
 
-Classes/Exception.o: Classes/Exception.cpp
+Classes/Exception.o: src/Classes/Exception.cpp
 	echo "Creation Exception.o"
-	${COMP} Classes/Exception.cpp -c -o Classes/Exception.o
+	${COMP} src/Classes/Exception.cpp -c -o build/Classes/Exception.o
 
-Classes/TempsException.o: Classes/TempsException.cpp
+Classes/TempsException.o: src/Classes/TempsException.cpp
 	echo "Creation TempsException.o"
-	${COMP} Classes/TempsException.cpp -c -o Classes/TempsException.o
+	${COMP} src/Classes/TempsException.cpp -c -o build/Classes/TempsException.o
 
-Classes/TimingException.o: Classes/TimingException.cpp
+Classes/TimingException.o: src/Classes/TimingException.cpp
 	echo "Creation TimingException.o"
-	${COMP} Classes/TimingException.cpp -c -o Classes/TimingException.o
+	${COMP} src/Classes/TimingException.cpp -c -o build/Classes/TimingException.o
 
-Classes/Planifiable.o: Classes/Planifiable.cpp
+Classes/Planifiable.o: src/Classes/Planifiable.cpp
 	echo "Creation Planifiable.o"
-	${COMP} Classes/Planifiable.cpp -c -o Classes/Planifiable.o
+	${COMP} src/Classes/Planifiable.cpp -c -o build/Classes/Planifiable.o
 
-Classes/Professeur.o: Classes/Professeur.cpp
+Classes/Professeur.o: src/Classes/Professeur.cpp
 	echo "Creation Professeur.o"
-	${COMP} Classes/Professeur.cpp -c -o Classes/Professeur.o
+	${COMP} src/Classes/Professeur.cpp -c -o build/Classes/Professeur.o
 
-Classes/Groupe.o: Classes/Groupe.cpp
+Classes/Groupe.o: src/Classes/Groupe.cpp
 	echo "Creation Groupe.o"
-	${COMP} Classes/Groupe.cpp -c -o Classes/Groupe.o
+	${COMP} src/Classes/Groupe.cpp -c -o build/Classes/Groupe.o
 
-Classes/Local.o: Classes/Local.cpp
+Classes/Local.o: src/Classes/Local.cpp
 	echo "Creation Local.o"
-	${COMP} Classes/Local.cpp -c -o Classes/Local.o
+	${COMP} src/Classes/Local.cpp -c -o build/Classes/Local.o
 
-Classes/Liste.o: Classes/Liste.cpp
+Classes/Liste.o: src/Classes/Liste.cpp
 	echo "Creation Liste.o"
-	${COMP} Classes/Liste.cpp -c -o Classes/Liste.o
+	${COMP} src/Classes/Liste.cpp -c -o build/Classes/Liste.o
 
-Classes/ListeTriee.o: Classes/ListeTriee.cpp
+Classes/ListeTriee.o: src/Classes/ListeTriee.cpp
 	echo "Creation ListeTriee.o"
-	${COMP} Classes/ListeTriee.cpp -c -o Classes/ListeTriee.o
+	${COMP} src/Classes/ListeTriee.cpp -c -o build/Classes/ListeTriee.o
 
-Classes/Iterateur.o: Classes/Iterateur.cpp
+Classes/Iterateur.o: src/Classes/Iterateur.cpp
 	echo "Creation Iterateur.o"
-	${COMP} Classes/Iterateur.cpp -c -o Classes/Iterateur.o
+	${COMP} src/Classes/Iterateur.cpp -c -o build/Classes/Iterateur.o
 
-Libraries/Functions.o: Libraries/Functions.cpp
+Libraries/Functions.o: src/Libraries/Functions.cpp
 	echo "Creation Functions.o"
-	${COMP} Libraries/Functions.cpp -c -o Libraries/Functions.o
+	${COMP} src/Libraries/Functions.cpp -c -o build/Libraries/Functions.o
 
 clear:
 	echo "Suppression des fichiers compilés"
-	rm -f Test6 *.o Classes/*.o Libraries/*.o
+	rm -rf build
