@@ -22,7 +22,6 @@ public:
 
     /*==================== MÉTHODES ====================*/
     void insere(const T &);
-    bool estVide() const;
 };
 
 #endif

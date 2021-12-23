@@ -9,12 +9,12 @@ const int TempsException::FORMAT_INVALIDE (-4);
 /*==================== CONSTRUCTEURS ====================*/
 TempsException::TempsException() {
 #ifdef DEBUG
-    cout << "TempsException: constructeur par défaut" << endl;
+    cout << "[DEBUG] TempsException: constructeur par défaut" << endl;
 #endif
 }
 TempsException::TempsException(int nvCode) {
 #ifdef DEBUG
-    cout << "TempsException: constructeur avec code" << endl;
+    cout << "[DEBUG] TempsException: constructeur avec code" << endl;
 #endif
     code = nvCode;
     message = new char [80];
@@ -40,7 +40,7 @@ TempsException::TempsException(int nvCode) {
 /*==================== DESTRUCTEUR ====================*/
 TempsException::~TempsException() {
 #ifdef DEBUG
-    cout << "TempsException: destructeur" << endl;
+    cout << "[DEBUG] TempsException: destructeur" << endl;
 #endif
 }
 

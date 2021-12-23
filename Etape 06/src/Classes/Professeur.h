@@ -16,6 +16,9 @@ private:
     char *prenom;
     int horaire;
 
+    /*===== Autres Méthodes =====*/
+    int compareProfs(const Professeur &) const;
+
 public:
     /*==================== CONSTRUCTEURS ====================*/
     Professeur();
@@ -38,9 +41,16 @@ public:
     const char *Tuple();
 
     /*==================== OPÉRATEURS ====================*/
+    /*===== Opérateur = =====*/
     void operator= (const Professeur &);
+    /*===== Opérateurs >>, << =====*/
     friend ostream &operator<< (ostream &, const Professeur &);
-
+    /*===== Opérateurs >, <, ==, >=, <= =====*/
+    int operator> (const Professeur &) const;
+    int operator< (const Professeur &) const;
+    int operator== (const Professeur &) const;
+    int operator>= (const Professeur &) const;
+    int operator<= (const Professeur &) const;
 };
 
 #endif

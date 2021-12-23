@@ -14,7 +14,7 @@ private:
     int minute;
 
     /*===== Autres Méthodes =====*/
-    int compareTemps(Temps) const;
+    int compareTemps(const Temps &) const;
 
 public:
     /*==================== CONSTRUCTEURS ====================*/

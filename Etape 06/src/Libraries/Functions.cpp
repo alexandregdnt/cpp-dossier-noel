@@ -5,7 +5,7 @@ char *toCapitalize(const char *str) {
     tmpstr = new char[strlen(str) + 1];
 
     for (int i = 0; str[i] != '\0'; i++) {
-        if (i == 0)
+        if (i == 0 || str[i-1] == ' ' || str[i-1] == '-')
             tmpstr[i] = toupper(str[i]);
         else
             tmpstr[i] = tolower(str[i]);

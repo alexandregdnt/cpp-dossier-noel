@@ -5,14 +5,14 @@
 template<class T>
 Liste<T>::Liste() {
 #ifdef DEBUG
-    cout << "Liste: constructeur par défaut" << endl;
+    cout << "[DEBUG] Liste: constructeur par défaut" << endl;
 #endif
     pTete = NULL;
 }
 template<class T>
 Liste<T>::Liste(const Liste<T> &copie) {
 #ifdef DEBUG
-    cout << "Liste: constructeur de copie" << endl;
+    cout << "[DEBUG] Liste: constructeur de copie" << endl;
 #endif
 
     if (copie.pTete == NULL) {
@@ -47,7 +47,7 @@ Liste<T>::Liste(const Liste<T> &copie) {
 template<class T>
 Liste<T>::~Liste() {
 #ifdef DEBUG
-    cout << "Liste: destructeur" << endl;
+    cout << "[DEBUG] Liste: destructeur" << endl;
 #endif
     Cellule<T> *pTmp = pTete, *pCur = NULL;
 
@@ -63,7 +63,7 @@ Liste<T>::~Liste() {
 template<class T>
 void Liste<T>::insere(const T &val) {
 #ifdef DEBUG
-    cout << "Liste: insere" << endl;
+    cout << "[DEBUG] Liste: insere" << endl;
 #endif
     if (estVide()) {
         pTete = new Cellule<T>;
@@ -81,31 +81,43 @@ void Liste<T>::insere(const T &val) {
         while (pTmp->suivant != NULL) {
             pTmp = pTmp->suivant;
         }
-
-        if (pTmp->suivant == NULL) {
-            pTmp->suivant = nvCell;
-        }
+        pTmp->suivant = nvCell;
     }
+
+    cout << "[DEBUG] ";
+    Affiche();
 }
 template<class T>
 T Liste<T>::retire(int ind) {
-    Cellule<T> *pTmp = pTete;
+    Cellule<T> *pTmp = pTete, *pPrec;
     T retour;
+    int i=0;
 
-    for (int i=0; i<getNombreElements()-1; i++) {
-        if (i == ind) {
-            retour = pTmp->valeur;
-        }
+    while (pTmp->suivant != NULL && i<ind) {
+        pPrec = pTmp;
         pTmp = pTmp->suivant;
+        i++;
+    }
+    retour = pTmp->valeur;
+
+    // Suppression de la cellule
+    if (pTmp == pTete) {
+        if (pTete->suivant != NULL)
+            pTete = pTete->suivant;
+        else
+            pTete = NULL;
+    } else {
+        if (pTmp->suivant == NULL) {
+            pPrec->suivant = NULL;
+        } else {
+            pPrec->suivant = pTmp->suivant;
+        }
     }
 
-    pTmp = pTete;
-    for (int i=0; i<getNombreElements()-1; i++) {
-        if (i == ind-1) {
-            pTmp->suivant = pTmp->suivant->suivant;
-        }
-        pTmp = pTmp->suivant;
-    }
+#ifdef DEBUG
+    cout << "[DEBUG] Liste: retire: " << Liste<T>::getNombreElements() << ". ";
+    Liste<T>::Affiche();
+#endif
 
     return retour;
 }
@@ -123,6 +135,10 @@ int Liste<T>::getNombreElements() const {
 
     delete pTmp;
     return i;
+}
+template<class T>
+Cellule<T> *Liste<T>::getPTete() const {
+    return pTete;
 }
 
 /*==================== AUTRES MÉTHODES ====================*/
@@ -149,7 +165,7 @@ void Liste<T>::Affiche() const {
 template<class T>
 void Liste<T>::operator=(const Liste<T> &copie) {
 #ifdef DEBUG
-    cout << "Liste: constructeur de copie" << endl;
+    cout << "[DEBUG] Liste: constructeur de copie" << endl;
 #endif
     if (copie.pTete == NULL) {
         pTete = NULL;

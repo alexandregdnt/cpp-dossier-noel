@@ -3,14 +3,14 @@
 /*==================== CONSTRUCTEURS ====================*/
 Professeur::Professeur() {
 #ifdef DEBUG
-    cout << "Professeur: constructeur par défaut" << endl;
+    cout << "[DEBUG] Professeur: constructeur par défaut" << endl;
 #endif
     nom = NULL;
     prenom = NULL;
 }
 Professeur::Professeur(int nvId, const char *nvNom, const char *nvPrenom) {
 #ifdef DEBUG
-    cout << "Professeur: constructeur avec paramètres" << endl;
+    cout << "[DEBUG] Professeur: constructeur avec paramètres" << endl;
 #endif
     nom = NULL;
     prenom = NULL;
@@ -21,7 +21,7 @@ Professeur::Professeur(int nvId, const char *nvNom, const char *nvPrenom) {
 }
 Professeur::Professeur(const Professeur &copie) {
 #ifdef DEBUG
-    cout << "Professeur: constructeur de copie" << endl;
+    cout << "[DEBUG] Professeur: constructeur de copie" << endl;
 #endif
     nom = NULL;
     prenom = NULL;
@@ -34,7 +34,7 @@ Professeur::Professeur(const Professeur &copie) {
 /*==================== DESTRUCTEUR ====================*/
 Professeur::~Professeur() {
 #ifdef DEBUG
-    cout << "Professeur: destructeur" << endl;
+    cout << "[DEBUG] Professeur: destructeur" << endl;
 #endif
     if (nom)
         delete(nom);
@@ -128,16 +128,34 @@ const char *Professeur::Tuple() {
     }
     return tuple;
 }
+/*===== Autres méthodes privées =====*/
+int Professeur::compareProfs(const Professeur &prof) const {
+    int ret;
+
+    ret = strcmp(getNom(), prof.getNom());
+    // cout << "[DEBUG] Prof: comparaison (Nom) (" << getNom() << " - " << prof.getNom() << "): " << ret << endl;
+    if (ret < 0) return -1;
+    if (ret > 0) return 1;
+
+    ret = strcmp(getPrenom(), prof.getPrenom());
+    // cout << "[DEBUG] Prof: comparaison (Prenom) (" << getPrenom() << " - " << prof.getPrenom() << "): " << ret << endl;
+    if (ret < 0) return -1;
+    if (ret > 0) return 1;
+
+    return 0;
+}
 
 /*==================== OPÉRATEURS ====================*/
+/*===== Opérateur = =====*/
 void Professeur::operator=(const Professeur &prof) {
 #ifdef DEBUG
-    cout << "Professeur: op =" << endl;
+    cout << "[DEBUG] Professeur: op =" << endl;
 #endif
     setId(prof.getId());
     setNom(prof.getNom());
     setPrenom(prof.getPrenom());
 }
+/*===== Opérateurs >>, << =====*/
 ostream &operator<<(ostream &s, const Professeur &prof) {
     /*
     s << "Professeur : (" << prof.getId() << ") ";
@@ -165,4 +183,40 @@ ostream &operator<<(ostream &s, const Professeur &prof) {
         s << "/";
 
     return s;
+}
+/*===== Opérateurs >, <, ==, >=, <= =====*/
+int Professeur::operator>(const Professeur &prof) const {
+    int ret = (compareProfs(prof) == 1);
+#ifdef DEBUG
+    cout << "[DEBUG] Prof: (" << getNom() << " > " << prof.getNom() << ") : " << ret << endl;
+#endif
+    return ret;
+}
+int Professeur::operator<(const Professeur &prof) const {
+    int ret = (compareProfs(prof) == -1);
+#ifdef DEBUG
+    cout << "[DEBUG] Prof: (" << getNom() << " < " << prof.getNom() << ") : " << ret << endl;
+#endif
+    return ret;
+}
+int Professeur::operator==(const Professeur &prof) const {
+    int ret = (compareProfs(prof) == 0);
+#ifdef DEBUG
+    cout << "[DEBUG] Prof: (" << getNom() << " == " << prof.getNom() << ") : " << ret << endl;
+#endif
+    return ret;
+}
+int Professeur::operator>=(const Professeur &prof) const {
+    int ret = (compareProfs(prof) == 1 || compareProfs(prof) == 0);
+#ifdef DEBUG
+    cout << "[DEBUG] Prof: (" << getNom() << " >= " << prof.getNom() << ") : " << ret << endl;
+#endif
+    return ret;
+}
+int Professeur::operator<=(const Professeur &prof) const {
+    int ret = (compareProfs(prof) == -1 || compareProfs(prof) == 0);
+#ifdef DEBUG
+    cout << "[DEBUG] Prof: (" << getNom() << " <= " << prof.getNom() << ") : " << ret << endl;
+#endif
+    return ret;
 }

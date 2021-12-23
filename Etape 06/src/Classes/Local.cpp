@@ -3,13 +3,13 @@
 /*==================== CONSTRUCTEURS ====================*/
 Local::Local() {
 #ifdef DEBUG
-    cout << "Local: constructeur par défaut" << endl;
+    cout << "[DEBUG] Local: constructeur par défaut" << endl;
 #endif
     nom = NULL;
 }
 Local::Local(int nvId, const char *nvNom) {
 #ifdef DEBUG
-    cout << "Local: constructeur avec paramètres" << endl;
+    cout << "[DEBUG] Local: constructeur avec paramètres" << endl;
 #endif
     nom = NULL;
 
@@ -18,7 +18,7 @@ Local::Local(int nvId, const char *nvNom) {
 }
 Local::Local(const Local &copie) {
 #ifdef DEBUG
-    cout << "Local: constructeur de copie" << endl;
+    cout << "[DEBUG] Local: constructeur de copie" << endl;
 #endif
     nom = NULL;
 
@@ -29,7 +29,7 @@ Local::Local(const Local &copie) {
 /*==================== DESTRUCTEUR ====================*/
 Local::~Local() {
 #ifdef DEBUG
-    cout << "Local: destructeur" << endl;
+    cout << "[DEBUG] Local: destructeur" << endl;
 #endif
     if (nom)
         delete nom;
@@ -99,7 +99,7 @@ const char *Local::Tuple() {
 /*==================== OPÉRATEURS ====================*/
 void Local::operator=(const Local &local) {
 #ifdef DEBUG
-    cout << "Local: op =" << endl;
+    cout << "[DEBUG] Local: op =" << endl;
 #endif
     setId(local.getId());
     setNom(local.getNom());

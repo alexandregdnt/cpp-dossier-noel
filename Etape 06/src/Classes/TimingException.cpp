@@ -7,12 +7,12 @@ const int TimingException::AUCUN_TIMING (-2);
 /*==================== CONSTRUCTEURS ====================*/
 TimingException::TimingException() {
 #ifdef DEBUG
-    cout << "TimingException: constructeur par défaut" << endl;
+    cout << "[DEBUG] TimingException: constructeur par défaut" << endl;
 #endif
 }
 TimingException::TimingException(int nvCode) {
 #ifdef DEBUG
-    cout << "TempsException: constructeur avec code" << endl;
+    cout << "[DEBUG] TempsException: constructeur avec code" << endl;
 #endif
     code = nvCode;
     message = new char [80];
@@ -30,7 +30,7 @@ TimingException::TimingException(int nvCode) {
 /*==================== DESTRUCTEUR ====================*/
 TimingException::~TimingException() {
 #ifdef DEBUG
-    cout << "TimingException: destructeur" << endl;
+    cout << "[DEBUG] TimingException: destructeur" << endl;
 #endif
 }
 

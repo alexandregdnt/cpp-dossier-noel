@@ -3,28 +3,28 @@
 /*==================== CONSTRUCTEURS ====================*/
 Temps::Temps() {
 #ifdef DEBUG
-    cout << "Temps: constructeur par défaut" << endl;
+    cout << "[DEBUG] Temps: constructeur par défaut" << endl;
 #endif
     setHeure(0);
     setMinute(0);
 }
 Temps::Temps(int h, int m) {
 #ifdef DEBUG
-    cout << "Temps: constructeur d'initialisation de Temps (heure)" << endl;
+    cout << "[DEBUG] Temps: constructeur d'initialisation de Temps (heure)" << endl;
 #endif
     setHeure(h);
     setMinute(m);
 }
 Temps::Temps(int d) {
 #ifdef DEBUG
-    cout << "Temps: constructeur d'initialisation de Temps (duree)" << endl;
+    cout << "[DEBUG] Temps: constructeur d'initialisation de Temps (duree)" << endl;
 #endif
     setHeure(d / 60);
     setMinute(d % 60);
 }
 Temps::Temps(const Temps &temps) {
 #ifdef DEBUG
-    cout << "Temps: copie temps" << endl;
+    cout << "[DEBUG] Temps: copie temps" << endl;
 #endif
     setMinute(temps.getMinute());
     setHeure(temps.getHeure());
@@ -33,7 +33,7 @@ Temps::Temps(const Temps &temps) {
 /*==================== DESTRUCTEUR ====================*/
 Temps::~Temps() {
 #ifdef DEBUG
-    cout << "Temps: destructeur " << endl;
+    cout << "[DEBUG] Temps: destructeur " << endl;
 #endif
 }
 
@@ -76,7 +76,7 @@ void Temps::Affiche() const {
 }
 
 /*===== Autres méthodes privées =====*/
-int Temps::compareTemps(Temps temps) const {
+int Temps::compareTemps(const Temps &temps) const {
     if (getHeure() < temps.getHeure()) return -1;
     if (getHeure() > temps.getHeure()) return 1;
     if (getMinute() < temps.getMinute()) return -1;
@@ -88,7 +88,7 @@ int Temps::compareTemps(Temps temps) const {
 /*===== Opérateur = =====*/
 void Temps::operator=(const Temps &temps) {
 #ifdef DEBUG
-    cout << "Temps: op =" << endl;
+    cout << "[DEBUG] Temps: op =" << endl;
 #endif
     setMinute(temps.getMinute());
     setHeure(temps.getHeure());
@@ -96,7 +96,7 @@ void Temps::operator=(const Temps &temps) {
 /*===== Opérateur + =====*/
 Temps Temps::operator+(const Temps &droite) {
 #ifdef DEBUG
-    cout << "Temps: op +" << endl;
+    cout << "[DEBUG] Temps: op +" << endl;
 #endif
     int dureeTot = getDuree() + droite.getDuree();
 
@@ -113,7 +113,7 @@ Temps operator+(int gauche, Temps &droite) {
 /*===== Opérateur - =====*/
 Temps Temps::operator-(const Temps &droite) {
 #ifdef DEBUG
-    cout << "Temps: op -" << endl;
+    cout << "[DEBUG] Temps: op -" << endl;
 #endif
     int dureeTot = getDuree() - droite.getDuree();
 

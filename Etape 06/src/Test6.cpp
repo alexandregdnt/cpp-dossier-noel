@@ -121,7 +121,7 @@ void Essai1()
     cout << "----> Voici le resultat de l'operateur = :" << endl;
     liste3.Affiche();
     cout << "----> On insere 50 dans la nouvelle liste :" << endl; 
-    liste3.insere(28);
+    liste3.insere(50);
     liste3.Affiche();
     cout << "----> Destruction de la nouvelle liste..." << endl;
   }
@@ -161,7 +161,6 @@ void Essai2()
 /*******************************************************************************************************/
 void Essai3()
 {
-    /*
   cout << "----- 3. Test du template ListeTriee avec des entiers ---------------------------------------" << endl;
   cout << "----- 3.1 Creation et gestion d'une Liste triee ---------------------------------------------" << endl;
 
@@ -190,13 +189,11 @@ void Essai3()
   liste.Affiche();
   cout << "La liste contient " << liste.getNombreElements() << " elements." << endl;
   cout << endl;
-  */
 }
 
 /*******************************************************************************************************/
 void Essai4()
 {
-    /*
   cout << "----- 4. Test du template ListeTriee avec des objets de la classe Professeur ---------------" << endl;
   cout << "Creation  d'une Liste triee..." << endl;
   ListeTriee<Professeur> liste;
@@ -204,22 +201,20 @@ void Essai4()
   cout << endl;
 
   cout << "On insere quelques professeurs..." << endl;
-  liste.insere(Professeur(1,"Wagner","Jean-Marc"));
-  liste.insere(Professeur(2,"Leonard","Anne"));
-  liste.insere(Professeur(3,"Quettier","Patrick"));
-  liste.insere(Professeur(4,"Vilvens","Claude"));
-  liste.insere(Professeur(5,"Charlet","Christophe"));
-  liste.insere(Professeur(6,"Quettier","Sophie"));
+  liste.insere(Professeur(1,"Wagner","Jean-Marc")); // 6.
+  liste.insere(Professeur(2,"Leonard","Anne")); // 2.
+  liste.insere(Professeur(3,"Quettier","Patrick")); // 3.
+  liste.insere(Professeur(4,"Vilvens","Claude")); // 5.
+  liste.insere(Professeur(5,"Charlet","Christophe")); // 1.
+  liste.insere(Professeur(6,"Quettier","Sophie")); // 4.
   liste.Affiche();
   cout << "La liste contient " << liste.getNombreElements() << " elements." << endl;
   cout << endl;
-     */
 }
 
 /*******************************************************************************************************/
 void Essai5()
 {
-    /*
   cout << "----- 5. Test de l'iterateur avec une Liste d'entiers ------------------------" << endl;
   cout << "Creation  d'une Liste..." << endl;
   Liste<int> liste;
@@ -245,13 +240,11 @@ void Essai5()
     cout << " " << (int)it << endl;
     it++;
   }
-     */
 }
 
 /*******************************************************************************************************/
 void Essai6()
 {
-    /*
   cout << "----- 6. Test de l'iterateur avec une Liste de Professeurs ---------------------" << endl;
   cout << "Creation  d'une Liste..." << endl;
   Liste<Professeur> liste;
@@ -281,13 +274,11 @@ void Essai6()
     cout << " " << (Professeur)it << endl;
     it++;
   }
-     */
 }
 
 /*******************************************************************************************************/
 void Essai7()
 {
- /*
   cout << "----- 7. Test de l'iterateur avec une ListeTriee d'entiers ------------------------" << endl;
   cout << "Creation  d'une Liste triee..." << endl;
   ListeTriee<int> liste;
@@ -313,14 +304,11 @@ void Essai7()
     cout << " " << (int)it << endl;
     it++;
   }
-  */
 }
 
 /*******************************************************************************************************/
 void Essai8()
 {
-    /*
-
   cout << "----- 8. Test de l'iterateur avec une ListeTriee de Professeurs ---------------------" << endl;
   cout << "Creation  d'une Liste triee..." << endl;
   ListeTriee<Professeur> liste;
@@ -350,5 +338,4 @@ void Essai8()
     cout << " " << (Professeur)it << endl;
     it++;
   }
-     */
 }

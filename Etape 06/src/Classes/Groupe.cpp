@@ -76,7 +76,7 @@ const char *Groupe::Tuple() {
 /*==================== OPÉRATEURS ====================*/
 void Groupe::operator=(const Groupe &groupe) {
 #ifdef DEBUG
-    cout << "Groupe: op =" << endl;
+    cout << "[DEBUG] Groupe: op =" << endl;
 #endif
     setId(groupe.getId());
     setNumero(groupe.getNumero());

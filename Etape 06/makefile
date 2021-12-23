@@ -3,9 +3,8 @@ COMP = g++ -DDEBUG
 
 all: createBuild Test6
 
-createBuild:
+createBuild: clear
 	echo "Creation du répertoire build"
-	rm -rf build
 	mkdir build
 	mkdir build/Classes
 	mkdir build/Libraries

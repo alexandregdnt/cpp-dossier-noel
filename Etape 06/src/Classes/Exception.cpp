@@ -3,7 +3,7 @@
 /*==================== CONSTRUCTEURS ====================*/
 Exception::Exception() {
 #ifdef DEBUG
-    cout << "Exception: constructeur par défaut" << endl;
+    cout << "[DEBUG] Exception: constructeur par défaut" << endl;
 #endif
     message = NULL;
 }
@@ -11,7 +11,7 @@ Exception::Exception() {
 /*==================== DESTRUCTEUR ====================*/
 Exception::~Exception() {
 #ifdef DEBUG
-    cout << "Exception: destructeur" << endl;
+    cout << "[DEBUG] Exception: destructeur" << endl;
 #endif
     if (message)
         delete message;

@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <iostream>
+#include "Iterateur.h"
 
 using namespace std;
 
@@ -30,10 +31,14 @@ public:
 
     /*==================== GETTERS ====================*/
     int getNombreElements() const;
+    Cellule<T> *getPTete() const;
 
     /*==================== AUTRES MÉTHODES ====================*/
     bool estVide() const;
     void Affiche() const;
+
+    /*==================== ITÉRATEUR ====================*/
+    // friend class Iterateur<T>;
 
     /*==================== OPÉRATEURS ====================*/
     void operator= (const Liste<T> &);

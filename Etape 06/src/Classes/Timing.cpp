@@ -12,13 +12,13 @@ const char *Timing::DIMANCHE = "Dimanche";
 /*==================== CONSTRUCTEURS ====================*/
 Timing::Timing() {
 #ifdef DEBUG
-    cout << "Timing: constructeur par défaut" << endl;
+    cout << "[DEBUG] Timing: constructeur par défaut" << endl;
 #endif
     jour = NULL;
 }
 Timing::Timing(const char *j, const Temps &h, const Temps &d) {
 #ifdef DEBUG
-    cout << "Timing: constructeur avec paramètres (jour, heure, duree)" << endl;
+    cout << "[DEBUG] Timing: constructeur avec paramètres (jour, heure, duree)" << endl;
 #endif
     jour = NULL;
 
@@ -28,7 +28,7 @@ Timing::Timing(const char *j, const Temps &h, const Temps &d) {
 }
 Timing::Timing(const Timing &timing) {
 #ifdef DEBUG
-    cout << "Timing: copie timing" << endl;
+    cout << "[DEBUG] Timing: copie timing" << endl;
 #endif
     jour = NULL;
 
@@ -40,7 +40,7 @@ Timing::Timing(const Timing &timing) {
 /*==================== DESTRUCTEUR ====================*/
 Timing::~Timing() {
 #ifdef DEBUG
-    cout << "Timing: desctructeur" << endl;
+    cout << "[DEBUG] Timing: desctructeur" << endl;
 #endif
     if (jour)
         delete jour;

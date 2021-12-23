@@ -6,7 +6,7 @@ int Event::codeCourant = 1;
 /*==================== CONSTRUCTEURS ====================*/
 Event::Event() {
 #ifdef DEBUG
-    cout << "Event: constructeur par défaut" << endl;
+    cout << "[DEBUG] Event: constructeur par défaut" << endl;
 #endif
     code = -1;
     intitule = NULL;
@@ -15,7 +15,7 @@ Event::Event() {
 }
 Event::Event(int c, const char *i) {
 #ifdef DEBUG
-    cout << "Event: constructeur d'initialisation" << endl;
+    cout << "[DEBUG] Event: constructeur d'initialisation" << endl;
 #endif
     code = -1;
     intitule = NULL;
@@ -27,7 +27,7 @@ Event::Event(int c, const char *i) {
 }
 Event::Event(const Event &event) {
 #ifdef DEBUG
-    cout << "Event: copie event" << endl;
+    cout << "[DEBUG] Event: copie event" << endl;
 #endif
     code = -1;
     intitule = NULL;
@@ -42,7 +42,7 @@ Event::Event(const Event &event) {
 /*==================== DESTRUCTEUR ====================*/
 Event::~Event() {
 #ifdef DEBUG
-    cout << "Event: destructeur" << endl;
+    cout << "[DEBUG] Event: destructeur" << endl;
 #endif
     codeCourant--;
     if (intitule)

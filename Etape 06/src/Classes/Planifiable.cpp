@@ -3,7 +3,7 @@
 /*==================== CONSTRUCTEURS ====================*/
 Planifiable::Planifiable() {
 #ifdef DEBUG
-    cout << "Planifiable: constructeur par défaut" << endl;
+    cout << "[DEBUG] Planifiable: constructeur par défaut" << endl;
 #endif
     id = -1;
     txt = NULL;
@@ -11,7 +11,7 @@ Planifiable::Planifiable() {
 }
 Planifiable::Planifiable(const Planifiable &copie) {
 #ifdef DEBUG
-    cout << "Planifiable: constructeur de copie" << endl;
+    cout << "[DEBUG] Planifiable: constructeur de copie" << endl;
 #endif
     id = copie.id;
     txt = NULL;
@@ -26,7 +26,7 @@ Planifiable::Planifiable(const Planifiable &copie) {
 /*==================== DESTRUCTEUR ====================*/
 Planifiable::~Planifiable() {
 #ifdef DEBUG
-    cout << "Planifiable: destructeur" << endl;
+    cout << "[DEBUG] Planifiable: destructeur" << endl;
 #endif
     if (txt)
         delete txt;
